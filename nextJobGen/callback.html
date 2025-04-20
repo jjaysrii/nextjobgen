@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Authentication</title>
+</head>
+<body>
+    <h1>Processing LinkedIn Authentication...</h1>
+    <script type="module">
+        import config from './config.js';
+        
+        // Handle LinkedIn OAuth callback
+        window.onload = async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            
+            if (code) {
+                try {
+                    // Exchange code for access token
+                    const response = await fetch('/api/linkedin/token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ code })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.access_token) {
+                        localStorage.setItem('linkedin_token', data.access_token);
+                        window.location.href = '/index.html';
+                    }
+                } catch (error) {
+                    console.error('Authentication error:', error);
+                }
+            }
+        };
+    </script>
+</body>
+</html>

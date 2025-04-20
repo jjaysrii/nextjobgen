@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextJobGen - Future Job Market Insights</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- PDF.js for resume parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NextJobGen</div>
+        <ul class="nav-links">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#forecasting">Job Forecasting</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+            <li><a href="#resume-upload">Resume Upload</a></li>
+            <li><a href="#job-search">Job Search</a></li>
+            <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <h1>Job Market Dashboard</h1>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2>Industry Trends</h2>
+                    <canvas id="industryTrendsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h2>Skills in Demand</h2>
+                    <canvas id="skillsChart"></canvas>
+                </div>
+                <div class="card">
+                    <h2>Job Growth by Location</h2>
+                    <canvas id="locationChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forecasting Section -->
+        <section id="forecasting" class="section">
+            <h1>Job Market Forecasting</h1>
+            <div class="forecast-container">
+                <div class="filters">
+                    <select id="industryFilter">
+                        <option value="">Select Industry</option>
+                    </select>
+                    <select id="timeframeFilter">
+                        <option value="6">Next 6 months</option>
+                        <option value="12">Next 1 year</option>
+                        <option value="24">Next 2 years</option>
+                    </select>
+                </div>
+                <div class="forecast-chart">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section id="recommendations" class="section">
+            <h1>Personalized Job Recommendations</h1>
+            <div class="recommendations-container">
+                <div class="profile-section">
+                    <h2>Your Profile</h2>
+                    <form id="profileForm">
+                        <input type="text" placeholder="Skills (comma-separated)" id="skills">
+                        <input type="text" placeholder="Experience (years)" id="experience">
+                        <input type="text" placeholder="Preferred Location" id="location">
+                        <button type="submit">Update Profile</button>
+                    </form>
+                </div>
+                <div class="job-matches" id="jobMatches">
+                    <!-- Job matches will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Upload Section -->
+        <section id="resume-upload" class="section">
+            <h1>Resume Upload & Analysis</h1>
+            <div class="upload-container">
+                <div class="upload-box">
+                    <input type="file" id="resumeUpload" accept=".pdf,.docx">
+                    <p>Drag & drop your resume or click to upload</p>
+                </div>
+                <div class="analysis-results" id="analysisResults">
+                    <!-- Resume analysis results will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Search Section -->
+        <section id="job-search" class="section">
+            <h1>Job Search</h1>
+            <div class="job-search-container">
+                <div class="search-filters">
+                    <input type="text" id="jobSkills" placeholder="Skills (comma-separated)">
+                    <input type="text" id="jobLocation" placeholder="Location">
+                    <button id="searchJobs">Search Jobs</button>
+                </div>
+                <div id="jobResults" class="job-results">
+                    <!-- Job results will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 NextJobGen - Empowering Career Decisions with AI</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/resume-parser.js"></script>
+    <script src="js/job-search.js"></script>
+</body>
+</html>
